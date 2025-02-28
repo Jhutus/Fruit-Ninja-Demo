@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState newState)
     {
         CurrentState = newState;
-        switch (newState)
+        /*switch (newState)
         {
             case GameState.MainMenu:
                 AudioManager.Instance.PlayMusic("MenuMusic");
@@ -36,23 +36,24 @@ public class GameManager : MonoBehaviour
             case GameState.GameOver:
                 UIManager.Instance.ShowGameOverMenu(true);
                 break;
-        }
+        }*/
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GamePlaying");
         ChangeState(GameState.Playing);
     }
 
     public void PauseGame()
     {
+        Time.timeScale = 0f;
         ChangeState(GameState.Paused);
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         ChangeState(GameState.Playing);
     }
 

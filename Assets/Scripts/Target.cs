@@ -20,6 +20,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        ScoreManager.Instance.AddScore(5);
     }
 
     private void OnTriggerEnter(Collider other) {
