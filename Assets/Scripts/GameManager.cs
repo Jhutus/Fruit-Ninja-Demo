@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        Time.timeScale = 1f;
+        ScoreManager.Instance.RestartScore();
         SceneManager.LoadScene("GamePlaying");
         ChangeState(GameState.Playing);
     }
