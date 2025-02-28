@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System; // Necesario para los eventos
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameState { MainMenu, Playing, Paused, GameOver }
     public GameState CurrentState { get; private set; }
+     public static event Action<GameState> OnGameStateChanged; // Evento
 
     private void Awake()
     {
@@ -19,24 +21,7 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState newState)
     {
         CurrentState = newState;
-        /*switch (newState)
-        {
-            case GameState.MainMenu:
-                AudioManager.Instance.PlayMusic("MenuMusic");
-                UIManager.Instance.ShowMainMenu(true);
-                break;
-            case GameState.Playing:
-                AudioManager.Instance.PlayMusic("GameMusic");
-                UIManager.Instance.ShowMainMenu(false);
-                break;
-            case GameState.Paused:
-                Time.timeScale = 0;
-                UIManager.Instance.ShowPauseMenu(true);
-                break;
-            case GameState.GameOver:
-                UIManager.Instance.ShowGameOverMenu(true);
-                break;
-        }*/
+        OnGameStateChanged?.Invoke(newState); // Dispara el evento
     }
 
     public void StartGame()

@@ -132,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 85296597}
   - component: {fileID: 85296596}
-  - component: {fileID: 85296595}
   m_Layer: 0
   m_Name: AudioSourceMainMenu
   m_TagString: Untagged
@@ -140,21 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &85296595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85296594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9393d9787336e84c97d303429a26f8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSlider: {fileID: 431509331}
-  sfxSlider: {fileID: 1159282272}
-  muteToggle: {fileID: 1998884427}
 --- !u!82 &85296596
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2242,6 +2226,7 @@ GameObject:
   - component: {fileID: 1123415602}
   - component: {fileID: 1123415604}
   - component: {fileID: 1123415603}
+  - component: {fileID: 1123415605}
   m_Layer: 5
   m_Name: SoundPanel
   m_TagString: Untagged
@@ -2311,6 +2296,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123415601}
   m_CullTransparentMesh: 1
+--- !u!114 &1123415605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123415601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9393d9787336e84c97d303429a26f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 431509331}
+  sfxSlider: {fileID: 1159282272}
+  muteToggle: {fileID: 1998884427}
 --- !u!1 &1154016378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,8 +2524,8 @@ GameObject:
   - component: {fileID: 1241528097}
   - component: {fileID: 1241528096}
   - component: {fileID: 1241528095}
-  - component: {fileID: 1241528100}
   - component: {fileID: 1241528099}
+  - component: {fileID: 1241528100}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
