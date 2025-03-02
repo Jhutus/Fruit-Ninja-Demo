@@ -49,4 +49,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         ChangeState(GameState.MainMenu);
     }
+
+    public void GameOver(){
+        Time.timeScale = 0f;
+        ChangeState(GameState.GameOver);
+    }
 }

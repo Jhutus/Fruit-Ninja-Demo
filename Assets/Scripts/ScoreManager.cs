@@ -21,6 +21,12 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(score<0){
+            EndGame();
+        }
+    }
     public void AddScore(int amount)
     {
         score += amount;
@@ -32,7 +38,13 @@ public class ScoreManager : MonoBehaviour
         return score;
     }
 
-    public void RestartScore(){
+    public void RestartScore()
+    {
         score = 0;
+    }
+
+    private void EndGame()
+    {
+        GameManager.Instance.GameOver();
     }
 }

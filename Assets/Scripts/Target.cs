@@ -4,27 +4,48 @@ public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
     //private SpawnManager spawnManager;
+    private CutSoundEfects soundEffects;
     private float minSpeed = 12;
     private float maxSpeed = 16;
     private float maxTorque = 2;
     private float xRange = 4;
     private float ySpawnPos = -2;
+    public int pointsValue;
+    public ParticleSystem explosionParticle;
     void Start()
     {
         targetRb = GetComponent<Rigidbody>();
-        //spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        soundEffects = FindObjectOfType<CutSoundEfects>();
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
     }
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        ScoreManager.Instance.AddScore(5);
+        if (GameManager.Instance.CurrentState == GameManager.GameState.Playing)
+        {
+             if (CompareTag("Bad"))
+            {
+                soundEffects.CutBad();
+            }
+            else
+            {
+                soundEffects.CutGood();
+            }
+            
+            Destroy(gameObject);
+            ScoreManager.Instance.AddScore(pointsValue);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         Destroy(gameObject);
+        if (!gameObject.CompareTag("Bad"))
+        {
+            ScoreManager.Instance.AddScore(-20);
+        }
     }
 
     Vector3 RandomForce()
